@@ -23,6 +23,31 @@ namespace Demo
 
             #endregion
 
+            #region CRUD Operations
+
+            // CRUD Operations
+            // 1. Create
+            // 2. Read
+            // 3. Update
+            // 4. Delete
+
+            //AppDbContext context = new AppDbContext();
+
+            //try
+            //{
+
+
+            //}
+            //finally
+            //{
+            //    context.Dispose(); // Close the connection with the database
+            //}
+
+            using (AppDbContext context = new AppDbContext()) ;
+            //using this method makes sure db connection is closed after the block
+            
+
+            #endregion
         }
     }
 }

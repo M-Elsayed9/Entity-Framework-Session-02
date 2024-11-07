@@ -39,6 +39,7 @@ namespace Demo
             //{
             //}
             //finally
+            
             //{
             //    context.Dispose(); // Close the connection with the database
             //}
@@ -46,16 +47,16 @@ namespace Demo
             using AppDbContext context = new AppDbContext();
             //using this method makes sure db connection is closed after the block
 
-            // Create
+            #region CREATE 
+            
             var employee = new Employee()
             {
+                Id = 40,
                 Name = "Mohamed",
                 Age = 30,
                 Salary = 10000,
                 Address = "Cairo"
             };
-
-
 
             //Console.WriteLine(context.Entry(employee).State); // Detached
             //// detached means the object is not tracked by the context
@@ -74,9 +75,9 @@ namespace Demo
 
             //Console.WriteLine(context.Entry(employee).State); // Modified
             //// modified means the object is tracked by the context and changes have been made
-            
+
             //Console.WriteLine(context.Entry(employee).State); // Detached
-            
+
             //context.Entry(employee).State = EntityState.Added; 
 
             //Console.WriteLine(context.Entry(employee).State); // added
@@ -84,6 +85,30 @@ namespace Demo
             //context.SaveChanges();
 
             //Console.WriteLine(context.Entry(employee).State); // Unchanged
+
+            #endregion
+
+            #region READ
+            // read - selectg - retrieve
+
+            context.Employees.Add(employee);
+
+            //var result = context.Employees.Where(e => e.Id == 40).FirstOrDefault();
+
+            //Console.WriteLine(result);
+
+            var Result = context.Employees.ToList()/*(E => E.Name)*/;
+
+            foreach (var result in Result)
+            {
+                Console.WriteLine(result);
+            }
+
+
+
+            #endregion
+            
+                
 
             #endregion
 

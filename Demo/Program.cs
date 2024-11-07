@@ -91,24 +91,36 @@ namespace Demo
             #region READ
             // read - selectg - retrieve
 
-            context.Employees.Add(employee);
+            //context.Employees.Add(employee);
 
-            //var result = context.Employees.Where(e => e.Id == 40).FirstOrDefault();
+            ////var result = context.Employees.Where(e => e.Id == 40).FirstOrDefault();
 
-            //Console.WriteLine(result);
+            ////Console.WriteLine(result);
 
-            var Result = context.Employees.ToList()/*(E => E.Name)*/;
+            //var Result = context.Employees.ToList()/*(E => E.Name)*/;
 
-            foreach (var result in Result)
-            {
-                Console.WriteLine(result);
-            }
+            //foreach (var result in Result)
+            //{
+            //    Console.WriteLine(result);
+            //}
 
 
 
             #endregion
-            
-                
+
+            #region UDATE
+            //context.Employees.Add(employee);
+
+            //var result = context.Employees.FirstOrDefault(E => E.Id == 40);
+
+            //result.Name = "Ahmed";
+            //context.Employees.Update(employee);
+
+            //Console.Write(context.Entry(result).State); // modified
+
+            //context.SaveChanges();
+            #endregion
+
 
             #endregion
 

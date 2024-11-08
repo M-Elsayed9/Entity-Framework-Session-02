@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Demo.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,8 @@ namespace Demo.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Entities.Employee>().ToTable("Employees");
-            //modelBuilder.Entity<Entities.Department>().ToTable("Departments");
+            modelBuilder.Entity<Entities.Employee>().ToTable("Employees");
+            modelBuilder.Entity<Entities.Department>().ToTable("Departments");
 
             //modelBuilder.Entity<Entities.Employee>().HasKey(e => e.Id);
             //modelBuilder.Entity<Entities.Department>().HasKey(d => d.Id);
@@ -37,6 +38,17 @@ namespace Demo.Contexts
             modelBuilder.ApplyConfiguration(new Configurations.DepartmentConfiguration());
 
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.Entity<Employee>()
+                .HasOne(e => e.Department)
+                .WithOne(d => d.Manager)
+                .HasForeignKey<Department>(d => d.EmpId);
+            
+            modelBuilder.Entity<Department>().
+                HasOne(D => D.Manager).
+                WithOne(E => E.Department).
+                HasForeignKey<Department>(D => D.EmpId);
+
 
             base.OnModelCreating(modelBuilder);
         }

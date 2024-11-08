@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,5 +11,14 @@ namespace Demo.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        //[ForeignKey("ManagerId")]
+        [ForeignKey(nameof(Department.Manager))] // another way to write it
+        public int EmpId { get; set; } // Foreign Key
+        public Employee Manager { get; set; } // Navigation Property
+        // must be ManagerId or EmployeeId to be recognized as foreign key by convention
+    
+
+    
+    
     }
 }

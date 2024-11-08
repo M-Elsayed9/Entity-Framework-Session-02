@@ -39,16 +39,17 @@ namespace Demo.Contexts
 
             //modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Entity<Employee>()
-                .HasOne(e => e.Department)
-                .WithOne(d => d.Manager)
-                .HasForeignKey<Department>(d => d.EmpId);
-            
-            modelBuilder.Entity<Department>().
-                HasOne(D => D.Manager).
-                WithOne(E => E.Department).
-                HasForeignKey<Department>(D => D.EmpId);
+            //modelBuilder.Entity<Employee>()
+            //    .HasOne(e => e.Department)
+            //    .WithOne(d => d.Manager)
+            //    .HasForeignKey<Department>(d => d.EmpId);
 
+            //modelBuilder.Entity<Department>().
+            //    HasOne(D => D.Manager).
+            //    WithOne(E => E.Department).
+            //    HasForeignKey<Department>(D => D.EmpId);
+
+            modelBuilder.Entity<Department>().HasMany(e => e.Employees).WithOne(d => d.WorkFor).HasForeignKey(d => d.WorkFor);
 
             base.OnModelCreating(modelBuilder);
         }

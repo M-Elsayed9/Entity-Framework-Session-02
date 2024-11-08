@@ -58,6 +58,8 @@ namespace Demo
                 Address = "Cairo"
             };
 
+
+
             //Console.WriteLine(context.Entry(employee).State); // Detached
             //// detached means the object is not tracked by the context
 
@@ -121,6 +123,23 @@ namespace Demo
             //context.SaveChanges();
             #endregion
 
+            #region DELETE
+
+            //context.Remove(employee);
+
+            //var result = context.Employees.FirstOrDefault(E => E.Id == 40);
+
+            //Console.WriteLine(context.Entry(result).State); // unchanged
+
+            //context.Employees.Remove(result);
+
+            //Console.WriteLine(context.Entry(result).State); // Deleted
+
+            //context.SaveChanges();
+
+            //Console.WriteLine(context.Entry(result).State); // Detached
+
+            #endregion
 
             #endregion
 

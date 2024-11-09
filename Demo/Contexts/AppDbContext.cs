@@ -13,7 +13,8 @@ namespace Demo.Contexts
     {
         public DbSet<Entities.Employee> Employees { get; set; }
         public DbSet<Entities.Department> Departments { get; set; }
-
+        public DbSet<Entities.Student> Students { get; set; }
+        public DbSet<Entities.Course> Courses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server = MOHAMED_PC; Database=DemoDB; Trusted_Connection=True; TrustServerCertificate = True; ");
@@ -51,6 +52,7 @@ namespace Demo.Contexts
 
             modelBuilder.Entity<Department>().HasMany(e => e.Employees).WithOne(d => d.WorkFor).HasForeignKey(d => d.WorkFor);
 
+            modelBuilder.Entity<StudentCourse>().HasKey(sc => new { sc.StudentId, sc.CourseId });
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -15,10 +15,9 @@ namespace Demo.Entities
         //[ForeignKey("Manager")]
         [ForeignKey(nameof(Department.Manager))] // another way to write it
         public int EmpId { get; set; } // Foreign Key
-        public Employee Manager { get; set; } // Navigation Property                              // must be ManagerId or EmployeeId to be recognized as foreign key by convention
+        public Employee Manager { get; set; } // Navigation Property                              
+        // must be ManagerId or EmployeeId to be recognized as foreign key by convention
         public List<Employee> Employees { get; set; } // Navigation Property
-
-
 
     }
 }
